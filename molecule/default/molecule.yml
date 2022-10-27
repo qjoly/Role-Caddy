@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: instance1
-    image: robertdebock/alpine:latest
+    image: qjoly/alpine-openrc:latest
     pre_build_image: true
     command: /sbin/init
     tmpfs:
