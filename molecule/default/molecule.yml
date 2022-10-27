@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: instance1
-    image: geerlingguy/docker-debian11-ansible:latest
+    image: robertdebock/alpine:latest
     pre_build_image: true
     command: /sbin/init
     tmpfs:
