@@ -1,0 +1,27 @@
+kind: pipeline
+type: exec
+name: "Installer config Caddy"
+steps:
+- name: "Lancement du playbook"
+  environment:
+    rootpass:
+      from_secret: root_password
+    ip_caddy:
+      from_secret: ip_caddy
+  commands:
+   - ansible-galaxy collection install community.general
+   - cp -r . /etc/ansible/roles/Role-Caddy
+   - ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook tests/test.yml -i "$ip_caddy," --extra-vars ansible_password=$rootpass -v
+
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: discord notification
+    image: appleboy/drone-discord
+    settings:
+      webhook_id: 749246295356473416/
+      webhook_token: ryUrsWa_iH8vyHVwBo3zoyqLy1QvpjYrFt7Gdn1mM6-9swueuUnIBWCDyp9DDE58qw-1
+      message: "Testing from drone image"

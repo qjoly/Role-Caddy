@@ -1,0 +1,21 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance1
+    image: geerlingguy/docker-debian11-ansible:latest
+    pre_build_image: true
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    groups:
+      - servers
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

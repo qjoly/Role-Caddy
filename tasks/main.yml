@@ -1,0 +1,16 @@
+---
+# tasks file for caddy
+
+- name: Installation du package Caddy
+  community.general.apk: 
+   name: caddy
+   state: present
+
+- name: Configuration du Caddyfile 
+  template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/Caddyfile
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart caddy

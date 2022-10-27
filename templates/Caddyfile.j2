@@ -1,0 +1,12 @@
+{% for site in caddy.revproxy  %}
+
+{{ site.fqdn }} {
+	reverse_proxy {{ site.url }}
+  log {
+           output file /var/log/caddy/{{ site.fqdn }}.log
+  }
+}
+
+{% endfor %}
+
+

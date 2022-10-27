@@ -1,0 +1,28 @@
+name: Run molecule test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+        
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: "3.10"
+          
+      - name: Install librairies
+        run: python -m pip install -r requirements.txt
+          
+      - name: Launch Molecule
+        run: |
+          molecule create
+          molecule prepare
+          molecule converge

@@ -1,0 +1,11 @@
+---
+
+caddy:
+  revproxy:
+  - fqdn: git.thoughtless.eu 
+    url: Gitea:3000
+  - fqdn: mail.thoughtless.eu
+    url: 192.168.128.114:80
+  - fqdn: docker.thoughtless.eu
+    url: 192.168.128.81:5000
+
