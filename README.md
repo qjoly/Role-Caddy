@@ -1,7 +1,7 @@
 Role Caddy
 =========
 
-Installation simple de Caddy sur une machine **Alpine**. 
+Installation simple de Caddy sur une machine **Alpine** ou **Debian**
 
 Role Variables
 --------------
