@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: instance1
-    image: qjoly/alpine-openrc:latest
+    image: qjoly/molecule-os:alpine3
     pre_build_image: true
     command: /sbin/init
     tmpfs:
@@ -13,8 +13,16 @@ platforms:
       - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    groups:
-      - servers
+  - name: instance2
+    image: qjoly/molecule-os:debian-bullseye
+    pre_build_image: true
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
 provisioner:
   name: ansible
 verifier:
