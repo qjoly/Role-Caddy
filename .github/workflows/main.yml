@@ -26,3 +26,8 @@ jobs:
           molecule create
           molecule prepare
           molecule converge
+          
+      - name: Ansible Publish
+        uses: ansible/ansible-publish-action@v1.0.0
+        with:
+            api_key: ${{ secrets.GALAXY_TOKEN }}
